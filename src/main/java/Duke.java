@@ -68,11 +68,13 @@ public class Duke {
             }
             else{
                 if(echo.equals("list")){
+                    int count = 1;
                     for(task i : store){
-                        System.out.println(i.read());
+                        System.out.println(count + i.read());
+                        count++;
                     }
                 }
-                else if(index!=0){
+                else if(index>0){
                     try{
                         task l = store.get(index-1);
                         l.done();
@@ -82,6 +84,18 @@ public class Duke {
                     catch(IndexOutOfBoundsException e){
                         System.out.println("There is no such task!");
                     }
+                }
+                else if(index<0){
+                    try{
+                        int actual = index * -1;
+                        task d = store.get(actual-1);
+                        d.delete();
+                        store.remove(actual-1);
+                    }
+                    catch(IndexOutOfBoundsException e){
+                        System.out.println("There is no such task!");
+                    }
+
                 }
                 else{
                     System.out.println("Invalid Command, I do not understand! ☹");
