@@ -1,0 +1,6 @@
+read book
+return book
+buy food
+random test 1
+list
+bye
